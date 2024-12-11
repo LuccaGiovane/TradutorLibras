@@ -11,6 +11,8 @@
 
 **SignTranslator** é uma aplicação de tradução em tempo real da Língua Brasileira de Sinais (Libras) desenvolvida em Python. Utilizando a webcam, a aplicação analisa os movimentos das mãos do usuário e identifica as letras correspondentes em Libras, facilitando a comunicação entre surdos e ouvintes através de tecnologia avançada de visão computacional e aprendizado de máquina.
 
+<br>
+
 ## ⚙️ Funcionalidades
 
 - **Detecção de Mãos:** Identifica e rastreia as mãos do usuário em tempo real usando a webcam.
@@ -18,6 +20,8 @@
 - **Interface Gráfica Intuitiva:** Interface amigável para iniciar e monitorar o processo de reconhecimento.
 - **Treinamento de Modelo Personalizado:** Permite treinar o modelo com um conjunto de dados específico para melhorar a precisão.
 - **Previsão em Tempo Real:** Exibe a letra identificada diretamente na interface durante o uso.
+
+<br>
 
 ## 🛠 Tecnologias Utilizadas
 
@@ -28,6 +32,8 @@
 - **NumPy:** Manipulação de arrays e operações matemáticas.
 - **Tkinter:** Biblioteca para criação da interface gráfica.
 - **Pandas:** Manipulação e análise de dados.
+
+<br>
 
 ## 💾 Instalação
 
@@ -64,6 +70,8 @@
    pip install -r requirements.txt
    ```
    
+<br>
+
 ## 🚀 Uso
 ### Treinamento do Modelo
 Antes de utilizar a aplicação para reconhecimento em tempo real, é necessário treinar o modelo com os dados de sinais em Libras.
@@ -78,8 +86,10 @@ Antes de utilizar a aplicação para reconhecimento em tempo real, é necessári
    ```
 - O treinamento pode levar algum tempo dependendo do seu hardware.
 - Após o treinamento, o modelo será salvo como model.h5.
+  
+<br>
 
-## Executando a Aplicação
+## 👨🏻‍💻 Executando a Aplicação
 1. Inicie a interface Gráfica:
    ```bash
    python main.py
@@ -89,8 +99,12 @@ Antes de utilizar a aplicação para reconhecimento em tempo real, é necessári
 - A aplicação acessará a webcam e começará a identificar as letras em Libras baseadas nos gestos das suas mãos.
 - Pressione 'q' na janela de vídeo para encerrar o reconhecimento.
 
+<br>
+
 ## 📊 Dataset de Treinamento para Libras
-Utilizamos o dataset Libras CNN, que contém milhares de imagens de mãos em diferentes posições correspondentes às letras da Libras. Este dataset foi fundamental para treinar o modelo de reconhecimento, garantindo maior precisão e eficiência na identificação dos gestos.
+Foi utilizado o dataset [Libras CNN](https://www.kaggle.com/datasets/allanpardinho/libras-cnn), que contém milhares de imagens de mãos em diferentes posições correspondentes às letras da Libras. Este dataset foi fundamental para treinar o modelo de reconhecimento, garantindo maior precisão e eficiência na identificação dos gestos.
+
+<br>
 
 ## 🤝 Contribuição
 Contribuições são bem-vindas! Se você deseja melhorar este projeto, siga as etapas abaixo:
