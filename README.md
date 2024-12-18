@@ -154,4 +154,3 @@ SignTranslator/
 - **dataset/:** Conjunto de dados para treinamento e teste.
 - **main.py:** Script principal para a interface gráfica.
 - **requirements.txt:** Lista de dependências do projeto.
-- **README.md:** Documentação deste projeto.
