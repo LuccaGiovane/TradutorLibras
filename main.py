@@ -2,6 +2,7 @@ import os
 import threading
 import tkinter as tk
 from tkinter import messagebox, font
+from tkinter import ttk  # Importar ttk para usar Progressbar
 from PIL import Image, ImageTk
 import tensorflow as tf
 from tensorflow.keras import layers, models, callbacks
@@ -13,6 +14,9 @@ def iniciar():
     pass
 
 def calibrar():
+    # Exibe a barra de progresso e o label de progresso
+    progress_bar.pack(pady=20)
+    progress_label.pack(pady=10)
     # Inicia o treinamento em uma thread separada
     train_thread = threading.Thread(target=train_model)
     train_thread.start()
@@ -21,10 +25,11 @@ def train_model():
     # Desabilita o botão Calibrar durante o treinamento
     calibrar_button.config(state='disabled')
     progress_var.set(0)
+    progress_bar['value'] = 0  # Resetar a barra de progresso
     progress_label.config(text="Treinando... 0%")
     
     # Código de treinamento embutido aqui
-    base_dir = "../dataset"
+    base_dir = "dataset"
     train_dir = os.path.join(base_dir, "train")
     test_dir = os.path.join(base_dir, "test")
 
@@ -110,6 +115,7 @@ def train_model():
             # Atualiza a barra de progresso a cada fim de época
             progresso = int(((epoch+1) / epochs) * 100)
             progress_var.set(progresso)
+            progress_bar['value'] = progresso
             progress_label.config(text=f"Treinando... {progresso}%")
             root.update_idletasks()
 
@@ -131,12 +137,12 @@ def train_model():
 
     # Atualiza a barra de progresso e feedback final
     progress_var.set(100)
+    progress_bar['value'] = 100
     progress_label.config(text="Treinamento concluído!")
     calibrar_button.config(state='normal')
 
-
 def main():
-    global root, calibrar_button, progress_var, progress_label
+    global root, calibrar_button, progress_var, progress_bar, progress_label
 
     # Interface gráfica principal
     root = tk.Tk()
@@ -172,14 +178,14 @@ def main():
     calibrar_button = tk.Button(root, text="Calibrar", command=calibrar, width=20, height=2)
     calibrar_button.pack(pady=10)
 
-    # Barra de Progresso
+    # Barra de Progresso (inicialmente oculta)
     progress_var = tk.IntVar()
-    progress_bar = tk.Scale(root, variable=progress_var, from_=0, to=100, orient=tk.HORIZONTAL, length=300, 
-                            bg='#ADD8E6', troughcolor='white', fg='black', state='normal')
-    progress_bar.pack(pady=20)
+    progress_bar = ttk.Progressbar(root, variable=progress_var, maximum=100, length=300, mode='determinate')
+    # Não fazer pack aqui para mantê-la oculta inicialmente
 
+    # Label de Progresso (inicialmente oculta)
     progress_label = tk.Label(root, text="", bg='#ADD8E6', font=('Helvetica', 12))
-    progress_label.pack(pady=10)
+    # Não fazer pack aqui para mantê-lo oculto inicialmente
 
     root.mainloop()
 
